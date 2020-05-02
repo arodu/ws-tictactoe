@@ -1,4 +1,4 @@
-const socket = io.connect('http://localhost:8080', { 'forceNew': false });
+const socket = io.connect('http://23.92.29.252:8080', { 'forceNew': false });
 const playerName = document.getElementById('playerName')
 const status = document.getElementById('status')
 const boardCells = document.getElementsByClassName('cell')
