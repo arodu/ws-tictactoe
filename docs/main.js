@@ -1,5 +1,5 @@
 //const socket = io.connect('ws://23.92.29.252:8080', { 'forceNew': false });
-const socket = io.connect('ws://127.0.0.1:8080', { 'forceNew': false });
+const socket = io.connect('ws://192.168.0.108:8080', { 'forceNew': false });
 
 const playerName = document.getElementById('playerName')
 const status = document.getElementById('status')
@@ -11,11 +11,11 @@ socket.on('messages', function(data) {
 });
 
 socket.on('player', function(data) {
-    player = data;
-    if(player == 0){
+    player = data.player
+    if(data.player == 0){
       playerName.innerHTML = "Guest"
     }else{
-      playerName.innerHTML = "Player "+data
+      playerName.innerHTML = "Game "+data.channel+": Player "+data.player
     }
 });
 

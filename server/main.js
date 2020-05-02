@@ -5,14 +5,45 @@ var io = require('socket.io')(server);
 
 var Game = require('./game');
 
+var count = 0
 var rooms = []
 
 io.on('connection', (socket) => {
-  
-
+  getRoom(socket);
 
 
 })
+
+function getRoom(socket){
+  //console.log(rooms)
+
+  let game = rooms.find((g) => {
+    return !(g.fullPlayers())
+  })
+
+  if( game == undefined ){
+    let channel = count
+    game = new Game(io, channel)
+    game.newPlayer(socket)
+    rooms[count] = game
+    count++
+
+  }else{
+    game.newPlayer(socket)
+  }
+
+  //console.log(game)
+
+
+  /*if(rooms != []){
+
+
+
+  }else{
+
+  }*/
+}
+
 
 
 //var game = new Game(io)
