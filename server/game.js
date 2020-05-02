@@ -8,6 +8,12 @@ class Game{
 
     console.log("new channel "+this.channel)
     //this.io.to(this.channel).emit('board', {board: this.board, turn: this.turn})
+
+    this.player = {
+      "1": null,
+      "2": null,
+    }
+
   }
 
   init(turn = 1){
@@ -44,10 +50,25 @@ class Game{
       }
     })
 
+    socket.on('disconnect', () => {
+      let player = 0
+      if(socket.id == this.player["1"].id){
+        player = 1
+        this.player["1"] = null
+      }
+      if(socket.id == this.player["2"].id){
+        player = 2
+        this.player["2"] = null
+      }
+
+      this.io.to(this.channel).emit('messages', `Player ${player} disconnected`)
+
+    })
+
     console.log(`Player ${player} connected`);
     socket.emit('player', {player: player, channel: this.channel})
     this.io.to(this.channel).emit('messages', `Player ${player} connected`)
-    
+
     this.io.to(this.channel).emit('board', {board: this.board, turn: this.turn})
 
     return player;
@@ -55,18 +76,18 @@ class Game{
 
   selectPlayer(socket){
     let player = 0
-    if(this.player1 == undefined){
-      this.player1 = socket
+    if(this.player["1"] == null){
+      this.player["1"] = socket
       player = 1
-    }else if(this.player2 == undefined){
-      this.player2 = socket
+    }else if(this.player["2"] == null){
+      this.player["2"] = socket
       player = 2
     }
     return player
   }
 
   fullPlayers(){
-    return (this.player1 != undefined && this.player2 != undefined)
+    return (this.player["1"] != null && this.player["2"] != null)
   }
 
   getBoard(){
