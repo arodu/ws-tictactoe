@@ -1,4 +1,4 @@
-const socket = io.connect('ws://ws-tictactoe.herokuapp.com/', { 'forceNew': false });
+const socket = io.connect('https://ws-tictactoe.herokuapp.com/', { 'forceNew': false });
 //const socket = io.connect('ws://127.0.0.1:8080', { 'forceNew': false });
 //const socket = io.connect('ws://192.168.0.108:8080', { 'forceNew': false });
 
