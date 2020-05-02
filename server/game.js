@@ -52,17 +52,16 @@ class Game{
 
     socket.on('disconnect', () => {
       let player = 0
-      if(socket.id == this.player["1"].id){
+      if(this.player["1"] != null && socket.id == this.player["1"].id){
         player = 1
         this.player["1"] = null
       }
-      if(socket.id == this.player["2"].id){
+      if(this.player["2"] != null && socket.id == this.player["2"].id){
         player = 2
         this.player["2"] = null
       }
 
       this.io.to(this.channel).emit('messages', `Player ${player} disconnected`)
-
     })
 
     console.log(`Player ${player} connected`);
