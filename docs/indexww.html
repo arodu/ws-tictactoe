@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Webservice TicTacToe</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+
+    <h2 id="playerName">Player</h2>
+
+    <div class="board">
+      <button type="button" class="cell" onclick="move(0)">0</button>
+      <button type="button" class="cell" onclick="move(1)">1</button>
+      <button type="button" class="cell" onclick="move(2)">2</button>
+      <button type="button" class="cell" onclick="move(3)">3</button>
+      <button type="button" class="cell" onclick="move(4)">4</button>
+      <button type="button" class="cell" onclick="move(5)">5</button>
+      <button type="button" class="cell" onclick="move(6)">6</button>
+      <button type="button" class="cell" onclick="move(7)">7</button>
+      <button type="button" class="cell" onclick="move(8)">8</button>
+    </div>
+
+    <footer id="status"></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" charset="utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
+  </body>
+</html>
