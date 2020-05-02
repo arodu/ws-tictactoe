@@ -5,7 +5,17 @@ var io = require('socket.io')(server);
 
 var Game = require('./game');
 
-var game = new Game(io)
+var rooms = []
+
+io.on('connection', (socket) => {
+  
+
+
+
+})
+
+
+//var game = new Game(io)
 
 app.use(express.static('docs'));
 

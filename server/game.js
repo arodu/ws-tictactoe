@@ -1,7 +1,7 @@
 
 class Game{
 
-  constructor(io){
+  constructor(io, channel = null){
     this.io = io
     this.init()
 
@@ -47,6 +47,10 @@ class Game{
       return 2;
     }
     return 0;
+  }
+
+  fullPlayers(){
+    return (this.player1 != undefined && this.player2 != undefined)
   }
 
   init(turn = 1){
