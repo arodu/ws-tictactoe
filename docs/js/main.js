@@ -1,6 +1,6 @@
-//const socket = io.connect('https://ws-tictactoe.herokuapp.com/', { 'forceNew': false });
+const socket = io.connect('https://ws-tictactoe.herokuapp.com/', { 'forceNew': false });
 //const socket = io.connect('ws://127.0.0.1:3000', { 'forceNew': false });
-const socket = io.connect('ws://192.168.0.108:3000', { 'forceNew': false });
+//const socket = io.connect('ws://192.168.0.108:3000', { 'forceNew': false });
 
 const playerName = document.getElementById('playerName')
 const playerOponent = document.getElementById('playerOponent')
