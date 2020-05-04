@@ -14,8 +14,6 @@ var rooms = []
 
 io.on('connection', (socket) => {
   getRoom(socket);
-
-
 })
 
 function getRoom(socket){
@@ -35,22 +33,7 @@ function getRoom(socket){
   }else{
     game.newPlayer(socket)
   }
-
-  //console.log(game)
-
-
-  /*if(rooms != []){
-
-
-
-  }else{
-
-  }*/
 }
-
-
-
-//var game = new Game(io)
 
 app.use(express.static('docs'));
 

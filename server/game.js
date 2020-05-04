@@ -4,9 +4,9 @@ class Game{
   constructor(io, channel){
     this.io = io
     this.channel = channel
-    this.init()
+    console.log("Channel "+this.channel+": new")
 
-    console.log("new channel "+this.channel)
+    this.init()
     //this.io.to(this.channel).emit('board', {board: this.board, turn: this.turn})
 
     this.player = {
@@ -19,6 +19,8 @@ class Game{
   init(turn = 1){
     this.board = [0,0,0,0,0,0,0,0,0]
     this.turn = turn
+    console.log("Channel "+this.channel+": game reset")
+    this.io.to(this.channel).emit('board', {board: this.board, turn: this.turn})
   }
 
   newPlayer(socket){
@@ -55,17 +57,31 @@ class Game{
       if(this.player["1"] != null && socket.id == this.player["1"].id){
         player = 1
         this.player["1"] = null
+        this.io.to(this.channel).emit('opponent', {player: 1, message: 'disconnected'})
       }
       if(this.player["2"] != null && socket.id == this.player["2"].id){
         player = 2
         this.player["2"] = null
+        this.io.to(this.channel).emit('opponent', {player: 2, message: 'disconnected'})
       }
 
       this.io.to(this.channel).emit('messages', `Player ${player} disconnected`)
+      this.init()
+      this.io.to(this.channel).emit('board', {board: this.board, turn: this.turn})
     })
 
-    console.log(`Player ${player} connected`);
+
     socket.emit('player', {player: player, channel: this.channel})
+
+    if(this.player["1"] != null){
+      this.io.to(this.channel).emit('opponent', {player: 1, message: 'connected'})
+    }
+    if(this.player["2"] != null){
+      this.io.to(this.channel).emit('opponent', {player: 2, message: 'connected'})
+    }
+    //this.io.to(this.channel).emit('opponent', {player: player, message: 'connected'})
+
+    console.log(`Player ${player} connected`);
     this.io.to(this.channel).emit('messages', `Player ${player} connected`)
 
     this.io.to(this.channel).emit('board', {board: this.board, turn: this.turn})

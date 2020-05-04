@@ -1,37 +1,72 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-
-.icon-block {
-  padding: 0 15px;
-}
-.icon-block .material-icons {
-	font-size: inherit;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-/*
-body{
-  font-family: helvetica;
-  background-color: #eee;
+main {
+  flex: 1 0 auto;
+}
+
+.page-footer{
+  padding-top: 0;
 }
 
 .board {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  width: 50vh;
+
+  width: 100%;
+  max-width: 50vh;
+  height: 50vh;
+
   margin: 0 auto;
 }
 
+.board .cell{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: monospace;
+  font-size: 3rem;
+  border: 0;
+  background-color: none;
+
+  border-bottom: 4px solid gray;
+  border-right: 4px solid gray;
+  /*padding: 1rem;*/
+  /*font-size: 4rem;*/
+}
+
+.board .cell:nth-last-child(-n+3) {
+  border-bottom: 0;
+}
+
+.board .cell:nth-child(3n) {
+  border-right: 0;
+}
 
 .board .cell{
-  font-family: monospace;
-  background-color: tomato;
-  color: white;
-  padding: 1rem;
-  font-size: 4rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
 }
-*/
+
+.board .cell.p1{
+  background-color: #ccc;
+  background-image: url(/icons/times-solid.svg);
+}
+
+.board .cell.p2{
+  background-color: #ccc;
+  background-image: url(/icons/circle-solid.svg);
+}
+
+.ratio1-1:before{
+   padding-top: 50%;
+}
+
+.strong{
+  font-weight: 600;
+}
