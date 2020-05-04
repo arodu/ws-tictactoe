@@ -55,12 +55,12 @@ main {
 
 .board .cell.p1{
   background-color: #ccc;
-  background-image: url(/icons/times-solid.svg);
+  background-image: url(icons/times-solid.svg);
 }
 
 .board .cell.p2{
   background-color: #ccc;
-  background-image: url(/icons/circle-solid.svg);
+  background-image: url(icons/circle-solid.svg);
 }
 
 .ratio1-1:before{
