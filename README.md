@@ -1,2 +1,6 @@
 # ws-tictactoe
-TicTacToe with webservices
+TicTacToe with javascript websockets
+
+## Demo
+https://arodu.github.io/ws-tictactoe/
+
